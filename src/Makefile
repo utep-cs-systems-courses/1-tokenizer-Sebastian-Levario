@@ -1,10 +1,10 @@
-#Hey
 
-OBJS= uimain.o tokenizer.o history.o
 
-CFLAGS=- 03
+OBJS= uimain.0 # tokenizer.o
 
-all:src
+CFLAGS=-g -O3 
+
+all: src
 
 src: $(OBJS)
 	cc -o src $(CFLAGS) $(OBJS)
