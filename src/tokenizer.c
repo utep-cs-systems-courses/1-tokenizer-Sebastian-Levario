@@ -21,10 +21,10 @@ int non_space_char(char c){
 
 
 char *word_start(char *str){
-  int i = 0;
-  while(non_space_char(str[i]) != 1){
-    i++;
+  while(non_space_char(*str) != 1){
+    if(*str=='\0') {return NULL;}
+    *str++;
   }
-  //printf("%c",str[i]);
-  return &str[i];
+  //printf("%c", *str);
+  return str;
 }
