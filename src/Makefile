@@ -1,6 +1,6 @@
 
 
-OBJS= uimain.0 # tokenizer.o
+OBJS= uimain.0  tokenizer.o
 
 CFLAGS=-g -O3 
 
