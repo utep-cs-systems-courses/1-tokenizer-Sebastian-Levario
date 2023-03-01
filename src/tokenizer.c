@@ -25,6 +25,6 @@ char *word_start(char *str){
   while(non_space_char(str[i]) != 1){
     i++;
   }
-  #printf("%c",str[i]);
+  //printf("%c",str[i]);
   return &str[i];
 }

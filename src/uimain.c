@@ -8,10 +8,10 @@
 
 void main() {
 
-
-  char str[100];//the limit is  100 char
+  int max = 100;
+  char str[max];  //the limit is  100 char
   putchar('$');
-  gets( str );
+  fgets( str, max, stdin);
   puts( str );
 
 
