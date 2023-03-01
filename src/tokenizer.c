@@ -28,3 +28,27 @@ char *word_start(char *str){
   //printf("%c", *str);
   return str;
 }
+
+char *word_terminator(char *word){
+  if(*word == '\0') {return NULL;}
+  while(non_space_char(*word) == 1){
+    *word++;
+  }
+  //printf(" T-%c ",*word);
+  return word;
+}
+
+int count_words(char *str){
+  int cnt =0;
+  while( *str!= '\0')
+    {
+      //printf("%d",cnt);
+      str =word_start(str);
+      if(*str!= '\0'){
+	cnt++;
+	str =word_terminator(str);
+      }
+      else{ break;}
+    }
+  return cnt;
+}
