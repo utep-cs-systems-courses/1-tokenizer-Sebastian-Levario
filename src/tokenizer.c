@@ -5,18 +5,12 @@
 
 
 int space_char(char c){
-  if(c==(' ') || c=='\t') {
-    return 1;}
-  else{
-    return 0;};
-
+  return (c==(' ') || c=='\t') ? 1 : 0;;
 }
 
 
 int non_space_char(char c){
-  if(c==(' ') || c=='\t') {
-    return 0;}
-  else{return 1;};
+  return (c==(' ') || c=='\t') ? 0:1;
 }
 
 
@@ -40,15 +34,52 @@ char *word_terminator(char *word){
 
 int count_words(char *str){
   int cnt =0;
-  while( *str!= '\0')
+  while( str )
     {
-      //printf("%d",cnt);
+      //print]f("%d",cnt);
       str =word_start(str);
-      if(*str!= '\0'){
+      if(str){
 	cnt++;
 	str =word_terminator(str);
       }
       else{ break;}
     }
-  return cnt;
+  //printf("\n");
+  return cnt-1;
 }
+
+char *copy_str(char *inStr, short len) {
+
+  char *newStr = malloc((len+1) *sizeof(char));
+  if (newStr == NULL) {return NULL;}
+  for(int i = 0; i<= len; i++)
+    {
+      newStr[i] = inStr[i];
+    }
+  newStr[len+1] = '\0';
+  return newStr;
+}
+
+char **tokenize(char *str){
+  int i = 0;
+  int WC = count_words(str);
+  char** tokens = malloc((WC+1) * sizeof(char*));
+  if (tokens == NULL) {return NULL;}
+  char** token_pointer = tokens;
+  char* start = str;
+  char* end = str;
+  while (i < WC ) {
+    start = word_start(end);
+    //printf("start\n");
+    end = word_terminator(start);
+    //printf("end\n");
+
+    *token_pointer = copy_str(str, end-start);
+    //printf(token_pointer);
+    *token_pointer++;
+    i++;
+  }
+  *token_pointer = '\0';
+  return tokens;
+}
+
